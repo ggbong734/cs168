@@ -14,7 +14,7 @@ _Self study notes taken from lecture slides_
 
 The Internet transfers data between endhosts:
 
-<p align="center"><img src="images/internet_data.png" height= "150"/></p>
+<p align="center"><img src="images/internet_data.png" height= "200"/></p>
 
 Communication between a pair of endpoints involve sending **packets** of data:
 - Packets are chunk of bits with headers
@@ -54,13 +54,15 @@ Pros for packet switching:
 Protocol
 > agreement between parties on **how to communicate**. Deines the syntax of communication. Exists at hardware and software level.
 
-<p align="center"><img src="images/network_layers.png" height= "150"/></p>
+<p align="center"><img src="images/network_layers.png" height= "200"/></p>
+
+L2 local delivery of packets. L3 global delivery of packets.
 
 Notice there is only one IP layer! 
 
 Lower three layers implemented everywhere. Top two layers implemented only at hosts. 
 
-<p align="center"><img src="images/end_system.png" height= "150"/></p>
+<p align="center"><img src="images/end_system.png" height= "180"/></p>
 
 Operating System (OS) supports **logical ports**:
 - place where app connects to OS network stack
@@ -72,7 +74,42 @@ When an app wants to access to the network, it opens a socket which is associate
 
 The port number is use by the OS to direct incoming packets to its associated socket.
 
-<p align="center"><img src="images/logical_ports.png" height= "150"/></p>
+<p align="center"><img src="images/logical_ports.png" height= "180"/></p>
+
+### L4: Design Goals
+
+Packet header must include destination **host address and port number**.
+
+Communication goes down to physical network and up to relevant layer.
+
+<p align="center"><img src="images/transmission_pathway.png" height= "200"/></p>
+
+Where to enforce reliability?
+
+Three interpretations of End to End principlet (E2E):
+- Only-if-sufficient - don't implement reliability at lower levels of system
+- Only-if-necessary - make network layer minimal
+- Only-if-useful - implement reliability at lower level as performance enhancement
+
+Everyone agrees that reliability should be implemented at the endhosts.
+
+Internet design goals:
+- Support multiple types of applications
+- Robust in face of failures
+- Allow distributed management of resources 
+
+### Routers 
+
+Distance-Vector key points:
+- Scalable 
+- Distributed - routers communicate with neighbors to compute routes 
+- Minimizes Distance - avoids loops and minimize price, latency
+
+Two components of distance-vector:
+- Protocol - each router advertises routes in its tables to neighbors (periodically and whenever its table changes).
+- Algorithm - on receiving an advertisement, a router may update its own table
+
+
 
 ## Protocols
 
