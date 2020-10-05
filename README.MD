@@ -67,12 +67,15 @@ Lower three layers implemented everywhere. Top two layers implemented only at ho
 Operating System (OS) supports **logical ports**:
 - place where app connects to OS network stack
 
+Switches/routers have **physical ports**
+- place where links connect to switches
+
 Socket 
-> an OS mechanism that connects app processes to the network stack
+> an OS mechanism that **connects app processes to the network** stack
 
 When an app wants to access to the network, it opens a socket which is associated with a port. 
 
-The port number is use by the OS to direct incoming packets to its associated socket.
+The **port number** is used by the OS to **direct incoming packets to its associated socket**.
 
 <p align="center"><img src="images/logical_ports.png" height= "180"/></p>
 
@@ -86,19 +89,32 @@ Communication goes down to physical network and up to relevant layer.
 
 Where to enforce reliability?
 
-Three interpretations of End to End principlet (E2E):
+Everyone agrees that reliability should be **implemented at the endhosts**, we cannot make each step reliable **nor can we assume network is reliable**.
+
+However, in some cases (e.g. network link with has high loss rate), it helps to implement reliability in network.
+
+Three interpretations of End to End principles (E2E):
 - Only-if-sufficient - don't implement reliability at lower levels of system
 - Only-if-necessary - make network layer minimal
 - Only-if-useful - implement reliability at lower level as performance enhancement
 
-Everyone agrees that reliability should be implemented at the endhosts.
-
 Internet design goals:
+- Build something that works
+- Connect existing networks
 - Support multiple types of applications
 - Robust in face of failures
-- Allow distributed management of resources 
+- Accommodate a variety of networks
+- Allow distributed management of resources
+- Easy end host attachment
+- Allow resource accountability
+
+If the goal of Internet is to support many many applications, and applications have different requirements, how does the Internet support them all? By building the lowest common denominator service (architected for flexibility) 
 
 ### Routers 
+
+Switches do what routers do but *in a single network*. 
+- Switch don't participate in global delivery **between* networks
+- Switch almost always mean router.
 
 Distance-Vector key points:
 - Scalable 
